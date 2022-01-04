@@ -3,7 +3,7 @@ package hello.servlet.web.frontcontroller.v3;
 import hello.servlet.web.frontcontroller.ModelView;
 import hello.servlet.web.frontcontroller.MyView;
 import hello.servlet.web.frontcontroller.v3.controller.MemberFormControllerV3;
-import hello.servlet.web.frontcontroller.v3.controller.MemberListControllV3;
+import hello.servlet.web.frontcontroller.v3.controller.MemberListControllerV3;
 import hello.servlet.web.frontcontroller.v3.controller.MemberSaveControllerV3;
 
 import javax.servlet.ServletException;
@@ -23,7 +23,7 @@ public class FrontControllerServletV3 extends HttpServlet {
     public FrontControllerServletV3(){
         controllerMap.put("/front-controller/v3/members/new-form", new MemberFormControllerV3());
         controllerMap.put("/front-controller/v3/members/save", new MemberSaveControllerV3());
-        controllerMap.put("/front-controller/v3/members", new MemberListControllV3());
+        controllerMap.put("/front-controller/v3/members", new MemberListControllerV3());
     }
 
     @Override
@@ -34,7 +34,9 @@ public class FrontControllerServletV3 extends HttpServlet {
 
         if (controller == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
         }
+
         //paramMap
         Map<String, String> paramMap = createParamMap(request);
         ModelView mv = controller.process(paramMap);
@@ -46,7 +48,7 @@ public class FrontControllerServletV3 extends HttpServlet {
     }
 
     private MyView viewResolver(String viewName) {
-        return new MyView("WEB-INF/views/" + viewName + ".jsp");
+        return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
 
     private Map<String, String> createParamMap(HttpServletRequest request) {
