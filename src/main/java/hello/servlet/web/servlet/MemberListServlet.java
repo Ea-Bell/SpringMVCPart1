@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name= "memberListServlet", urlPatterns = "/servlet/members")
+@WebServlet(name= "memberListServlet", urlPatterns = "/servlet/members.jsp")
 public class MemberListServlet extends HttpServlet {
     private MemberRepository memberRepository = MemberRepository.getInstance();
     @Override

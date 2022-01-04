@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name="MemberFormServlet", urlPatterns = "/servlet/members/new-form")
+@WebServlet(name="MemberFormServlet", urlPatterns = "/servlet/new-form/members.jsp")
 public class MemberFormServlet extends HttpServlet {
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
@@ -29,7 +29,7 @@ public class MemberFormServlet extends HttpServlet {
                 " <title>Title</title>\n" +
                 "</head>\n" +
                 "<body>\n" +
-                "<form action=\"/servlet/members/save\" method=\"post\">\n" +
+                "<form action=\"/servlet/members.jsp/save\" method=\"post\">\n" +
                 " username: <input type=\"text\" name=\"username\" />\n" +
                 " age: <input type=\"text\" name=\"age\" />\n" +
                 " <button type=\"submit\">전송</button>\n" +
